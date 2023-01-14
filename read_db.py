@@ -52,4 +52,12 @@ GROUP BY gender
 number_by_gender = cursor.execute(sum_gender).fetchall()
 print(number_by_gender)
 
+sum_age = """ 
+SELECT substr(firstname,1, 1), sum(age)
+FROM students 
+GROUP BY substr(firstname,1, 1)
+"""
+age_by_fn = cursor.execute(sum_age).fetchall()
+print(age_by_fn)
+
 conn.close()
