@@ -35,4 +35,21 @@ average_age_by_gender = cursor.execute(group_by_query).fetchall()
 
 print(average_age_by_gender)
 
+firstname_J = """
+SELECT firstname, lastname
+FROM students
+WHERE firstname LIKE 'J%'
+"""
+
+firstname_J_5 = cursor.execute(firstname_J).fetchmany(5)
+print(firstname_J_5)
+
+sum_gender = """ 
+SELECT gender, sum(age/age)
+FROM students 
+GROUP BY gender 
+"""
+number_by_gender = cursor.execute(sum_gender).fetchall()
+print(number_by_gender)
+
 conn.close()
